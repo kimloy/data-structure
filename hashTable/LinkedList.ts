@@ -37,12 +37,13 @@ export class LinkedList {
     return node;
   }
 
-  public remove = (key) => {
-    if (this.head == key) {
+  public remove = (key, node: LinkedList) => {
+    if (this.head.key == key) {
       if (this.head == this.tail) {
         this.head = null;
         this.tail = null;
         --this.length;
+        return;
       } else {
         const secondNode = this.head.next;
         const thirdNode = secondNode.next;
@@ -71,10 +72,10 @@ export class LinkedList {
     }
   };
 
-  public findNode = (key, node) => {
-    let currNode = node;
+  public findNode = (key: string, node: LinkedList) => {
+    let currNode = node.head;
 
-    while (currNode) {
+    while (currNode.key) {
       if (currNode.key === key) {
         return currNode;
       }

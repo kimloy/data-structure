@@ -35,11 +35,24 @@ class HashTable {
     const reqNode = indexNode.findNode(key, indexNode);
     return reqNode;
   }
+
+  public remove(key: string){
+    const hashCode = this.generateHashCode(key);
+    const tableIndex = hashCode % this.size;
+    const indexNode = this.table[tableIndex];
+
+    indexNode.remove(key, indexNode);
+    
+  }
 }
 
 const ht = new HashTable(20);
 
 ht.insert("Paul", "1234");
-ht.insert("Paul", "5678");
+ht.insert("Amanda", "1234");
 
+console.log(ht.get("Amanda"));
+
+ht.remove("Amanda");
 console.log(ht)
+
