@@ -4,11 +4,16 @@ class INode {
   public next: INode | null;
 
   constructor(key, value) {
-    (this.key = key), (this.value = value);
+    if (key === undefined || value === undefined) {
+      this.key = null;
+      this.value = null;
+    } else {
+      (this.key = key), (this.value = value);
+    }
   }
 }
 
-class LinkedList {
+export class LinkedList {
   public head: INode | null;
   public tail: INode | null;
   public length: number;
@@ -64,5 +69,18 @@ class LinkedList {
       }
       return undefined;
     }
+  };
+
+  public findNode = (key, node) => {
+    let currNode = node;
+
+    while (currNode) {
+      if (currNode.key === key) {
+        return currNode;
+      }
+      currNode = currNode.next;
+    }
+
+    return undefined;
   };
 }
