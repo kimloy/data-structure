@@ -56,3 +56,5 @@ console.log(ht.get("Amanda"));
 ht.remove("Amanda");
 console.log(ht)
 
+ht.remove("Paul")
+console.log(ht);
